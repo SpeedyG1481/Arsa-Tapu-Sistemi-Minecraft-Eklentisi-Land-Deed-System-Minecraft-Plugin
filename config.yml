@@ -1,0 +1,56 @@
+#Blok fiyatı, kiralama yaparken alandaki blokların toplamı ile
+#blok fiyatının çarpılması için kullanılır yani alanın değerini hesaplamak
+#için blok fiyatı gereklidir.
+#Örneğin; 10X10X256(Yükseklik) bir alan seçelim ödememiz gereken tutar; 10*10*1,25*256(Yükseklik) = 32000 ₺
+Blok-Fiyati: 1.25
+#İade Yüzdesi oyuncu kiraladığı alanı satmak istediğinde
+#Ödediğin paranın yüzde olarak geri alacağı oranı ayarladığımız
+#değişkendir
+Iade-Yuzdesi: 50.00
+#Arsa kiralama aletinin kullanım süresini buradan ayarlayabilirsiniz.
+#Süreyi saniye cinsinden giriniz.
+Arsa-Aleti-Kullanim-Suresi: 120
+#Silinme Süresi; Oyuncu ne kadar süre(gün) oyuna girmediğinde
+#arsalarının silinmesini ayarladığımız değişken.
+Silinme-Suresi: 90
+#Alan-Gosterimi-Efektle; Bunu açarasanız oyuncu claim atmaya çalışırken başkasının
+#arsasına takılıyorsa, o arsanın üzerinde bir efekt oluşur ve nereyi yanlış claimlediğini
+#oyuncunun anlamasına yardımcı olur :)
+Alan-Gosterim-Efekti: true
+#Maximum-Ayarlari; Oyuncuların arsalarına alabilecekleri ya da yasaklayabilecekleri
+#oyuncuları sınırlandırdığımız alan;
+#Yetkiler arsa sahibinin yetkileri olarak geçerli olur yani oyuncu bclaim.vip yetkisine sahipse
+#her arsasına ayrı ayrı 7'şer kişi alabilir.
+Maximum:
+  Ekip:
+    bclaim.oyuncu: 2
+    bclaim.vip: 4
+    bclaim.vip+: 6
+    bclaim.vip++: 8
+  Yasakli-Oyuncu:
+    bclaim.oyuncu: 2
+    bclaim.vip: 3
+    bclaim.vip+: 4
+    bclaim.vip++: 5
+#Minimum arsa blok sayısı, oyuncuların claim atarken tek blok kiralamalarını ya da az
+#blok kiralayıp claim delikleri oluşturmalarını engellemek için oluşturulmuştur.
+Minimum-Arsa-Blok-Sayisi: 10000
+#Yer-Gog sistemi; Öncelikle bu sistem yüksek seviye sunucularda açılması
+#önerimizdir. Oyuncular Claim attığında Cuboid yani dikdörtgenler prizması şeklinde
+#claim atarlar, bir nevi sanki world guard eklentisinden region kaydetmede kullandığımız
+#world edit komutlarından olan //expand vert gibi düşünebilirsiniz
+#Bu sistem açık olduğunda oyuncuların tüm claimleri, aldıkları yükseklikten ibaret olacaktır kapalı
+#olduğunda ise oyuncular claim attığında otomatik yerden göğe satın alınmış olarak kabul edilecektir.
+Yer-Gog-Sistemi: false
+#Oyuncuların kaç blok claim atabileceklerini sınırladığımız yer.
+Claim-Sinirlari:
+  bclaim.oyuncu: 250000
+  bclaim.vip: 1000000
+  bclaim.vip+: 10000000
+  bclaim.vip++: 100000000
+  bclaim.admin: -1 #sonsuz = -1
+#Claim atmanın yasak olduğu world'ler.
+Claim-Yasak-Dunyalar:
+- world_the_end
+- world_nether
+  
