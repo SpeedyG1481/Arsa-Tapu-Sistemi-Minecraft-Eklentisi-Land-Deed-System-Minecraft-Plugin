@@ -63,7 +63,7 @@ public class Arsa_Admin_Sil_Onay_Menu implements Listener {
 	private ItemStack onayla() {
 		ItemStack item = Skull.getCustomSkull("56665f823e0e08d0800c7223a7625f1114ad18b7df3fd2d67de7ad70a806ca84");
 		ItemMeta imeta = item.getItemMeta();
-		imeta.setDisplayName("§aARSA SİLMEYİ ONAYLA");
+		imeta.setDisplayName("§aSilmeyi Onayla");
 		item.setItemMeta(imeta);
 		return item;
 	}
@@ -71,7 +71,7 @@ public class Arsa_Admin_Sil_Onay_Menu implements Listener {
 	private ItemStack reddet() {
 		ItemStack item = Skull.getCustomSkull("9bb0bfe495fa8b6eb026ad3e6043caf7a8ac25ac48bc0ecc6d4b1d9b10ae34bd");
 		ItemMeta imeta = item.getItemMeta();
-		imeta.setDisplayName("§cARSA SİLMEYİ REDDET");
+		imeta.setDisplayName("§cSilmeyi Reddet");
 		item.setItemMeta(imeta);
 		return item;
 	}

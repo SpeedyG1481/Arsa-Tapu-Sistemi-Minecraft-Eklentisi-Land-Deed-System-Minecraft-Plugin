@@ -1,7 +1,8 @@
 name: Basic-Claims
 author: SpeedyG(YSO)
-version: 1.0
-main: com.speedyg.obclaim.Claim
+version: 2.2.2
+main: com.speedyg.basicclaim.Claim
+softdepend: [CoinsAPINB, PlaceholderAPI]
 depend: [Vault]
 commands:
   kirala:

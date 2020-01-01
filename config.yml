@@ -1,3 +1,6 @@
+Locale: TR
+#ECON-API; VAULT, COINSAPI
+ECON-API: VAULT
 #Blok fiyatı, kiralama yaparken alandaki blokların toplamı ile
 #blok fiyatının çarpılması için kullanılır yani alanın değerini hesaplamak
 #için blok fiyatı gereklidir.
