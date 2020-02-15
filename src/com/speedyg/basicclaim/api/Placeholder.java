@@ -5,60 +5,67 @@ import org.bukkit.OfflinePlayer;
 import com.speedyg.basicclaim.Claim;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import org.bukkit.entity.Player;
 
 public class Placeholder extends PlaceholderExpansion {
 
-	private Claim main;
-	private Claim_API api;
+    private Claim_API api;
 
-	public Placeholder(Claim lobi) {
-		this.main = lobi;
-		this.api = new Claim_API(this.main);
-	}
+    public Placeholder() {
+        this.api = new Claim_API();
+    }
 
-	@Override
-	public boolean canRegister() {
-		return true;
-	}
+    @Override
+    public boolean canRegister() {
+        return true;
+    }
 
-	@Override
-	public String getAuthor() {
-		return "Creative Spects(YSÖ)";
-	}
+    @Override
+    public String getAuthor() {
+        return "Creative Spects(YSÖ)";
+    }
 
-	@Override
-	public String getIdentifier() {
-		return "bclaims";
-	}
+    @Override
+    public String getIdentifier() {
+        return "bclaims";
+    }
 
-	@Override
-	public String getVersion() {
-		return main.getDescription().getVersion();
-	}
+    @Override
+    public String getVersion() {
+        return Claim.main.getDescription().getVersion();
+    }
 
-	@Override
-	public String onRequest(OfflinePlayer player, String identifier) {
-		long hak = 0;
-		// %bclaims_player_ownedclaimblocks%
-		if (identifier.contains("ownedclaimblocks")) {
-			hak = api.getPlayerClaimBlocksSize(player);
-		}
-		// %bclaims_player_ownedclaims%
-		if (identifier.contains("ownedclaims")) {
-			hak = api.getPlayerClaimsSize(player);
-		}
+    @Override
+    public String onRequest(OfflinePlayer player, String identifier) {
+        String hak = "";
 
-		// %bclaims_allremovedclaimssize%
-		if (identifier.contains("allremovedclaimssize")) {
-			hak = api.getRemovedClaimsSize();
-		}
+        // %bclaims_player_ownedclaimblocks%
+        if (identifier.contains("ownedclaimblocks")) {
+            hak = "" + api.getPlayerClaimBlocksSize(player);
+        }
+        // %bclaims_player_ownedclaims%
+        if (identifier.contains("ownedclaims")) {
+            hak = "" + api.getPlayerClaimsSize(player);
+        }
 
-		// %bclaims_allclaimssize%
-		if (identifier.contains("allclaimssize")) {
-			hak = api.getAllClaims();
-		}
+        // %bclaims_allremovedclaimssize%
+        if (identifier.contains("allremovedclaimssize")) {
+            hak = "" + api.getRemovedClaimsSize();
+        }
 
-		return String.valueOf(hak);
-	}
+        // %bclaims_allclaimssize%
+        if (identifier.contains("allclaimssize")) {
+            hak = "" + api.getAllClaimsSize();
+        }
+
+        // %bclaims_claimowner%
+        if (player.isOnline())
+            if (identifier.contains("claimowner")) {
+                Player p = (Player) player;
+                hak = api.getClaimOwner(p.getLocation());
+            }
+
+        return hak;
+    }
 
 }

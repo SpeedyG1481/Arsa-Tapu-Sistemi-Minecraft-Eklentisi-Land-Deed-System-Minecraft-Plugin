@@ -84,7 +84,6 @@ public class Istekler_Menu implements Listener {
 	private ItemStack okuyucu(String arsa) {
 		ItemStack item = new ItemStack(Material.getMaterial("PAPER"));
 		ItemMeta imeta = item.getItemMeta();
-		Bukkit.broadcastMessage("" + arsa);
 		imeta.setDisplayName("§7Gönderen; §a" + cal.getArsaSahibi(arsa.split(":")[1]));
 		imeta.setLore(Arrays.asList("",
 				" §8• §7Arsa Lokasyonu; §e" + arsa.split(":")[1].replaceAll("-", " ").replaceAll("&", ""), "",

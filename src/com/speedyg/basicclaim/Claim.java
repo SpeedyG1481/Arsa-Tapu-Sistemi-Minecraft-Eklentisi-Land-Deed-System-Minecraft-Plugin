@@ -102,7 +102,7 @@ public class Claim extends JavaPlugin implements Listener {
 
     private boolean loadPlaceHolder() {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new Placeholder(this).register();
+            new Placeholder().register();
             return true;
         }
         return false;
@@ -170,18 +170,22 @@ public class Claim extends JavaPlugin implements Listener {
                     int listeXBuyuk = Math.max(solX, sagX);
                     int listeZBuyuk = Math.max(solZ, sagZ);
 
+                    final boolean b1 = ((listeXKucuk >= xPos1 && listeXKucuk <= xPos2)
+                            && (listeZKucuk >= zPos1 && listeZKucuk <= zPos2))
+                            || ((listeXBuyuk >= xPos1 && listeXBuyuk <= xPos2)
+                            && (listeZBuyuk >= zPos1 && listeZBuyuk <= zPos2));
+                    final boolean b4 = (xPos1 >= listeXKucuk && xPos1 <= listeXBuyuk)
+                            && (zPos1 >= listeZKucuk && zPos1 <= listeZBuyuk);
+                    boolean b3 = b4;
+                    final boolean b2 = (xPos2 >= listeXKucuk && xPos2 <= listeXBuyuk)
+                            && (zPos2 >= listeZKucuk && zPos2 <= listeZBuyuk);
                     if (main.getConfig().getBoolean("Yer-Gog-Sistemi")) {
                         // 3D Cuboid System Area Cross Check
 
                         // kenar köşegenler kontrolü
-                        if ((((xPos1 >= listeXKucuk && xPos1 <= listeXBuyuk)
-                                && (zPos1 >= listeZKucuk && zPos1 <= listeZBuyuk))
-                                || ((xPos2 >= listeXKucuk && xPos2 <= listeXBuyuk)
-                                && (zPos2 >= listeZKucuk && zPos2 <= listeZBuyuk))
-                                || (((listeXKucuk >= xPos1 && listeXKucuk <= xPos2)
-                                && (listeZKucuk >= zPos1 && listeZKucuk <= zPos2))
-                                || ((listeXBuyuk >= xPos1 && listeXBuyuk <= xPos2)
-                                && (listeZBuyuk >= zPos1 && listeZBuyuk <= zPos2))))
+                        if ((b3
+                                || b2
+                                || b1)
                                 && ((yPos1 >= listeYKucuk && yPos1 <= listeYBuyuk
                                 || yPos2 >= listeYKucuk && yPos2 <= listeYKucuk)
                                 || ((listeYBuyuk >= yPos1 && listeYBuyuk <= yPos2)
@@ -207,14 +211,9 @@ public class Claim extends JavaPlugin implements Listener {
                     } else {
                         // 2D Cuboid System Area Cross Check
                         // kenar köşegenler kontrolü
-                        if (((xPos1 >= listeXKucuk && xPos1 <= listeXBuyuk)
-                                && (zPos1 >= listeZKucuk && zPos1 <= listeZBuyuk))
-                                || ((xPos2 >= listeXKucuk && xPos2 <= listeXBuyuk)
-                                && (zPos2 >= listeZKucuk && zPos2 <= listeZBuyuk))
-                                || (((listeXKucuk >= xPos1 && listeXKucuk <= xPos2)
-                                && (listeZKucuk >= zPos1 && listeZKucuk <= zPos2))
-                                || ((listeXBuyuk >= xPos1 && listeXBuyuk <= xPos2)
-                                && (listeZBuyuk >= zPos1 && listeZBuyuk <= zPos2)))
+                        if (b4
+                                || b2
+                                || b1
                                 || ((listeXKucuk >= xPos1 && listeXKucuk <= xPos2)
                                 && (zPos1 >= listeZKucuk && zPos1 <= listeZBuyuk))
                                 || (listeZKucuk >= zPos1 && listeZKucuk <= zPos2)

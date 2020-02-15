@@ -104,7 +104,6 @@ public class Claim_Listesi_Genel implements Listener {
 		ItemMeta imeta = item.getItemMeta();
 		imeta.setDisplayName("§7Tapu Numarası: §a" + (sira + 1));
 		imeta.setLore(Arrays.asList("", " §8• §7Tapu Sahibi; §a" + cal.getArsaSahibi(arsa),
-				" §8• §7Lokasyon Bilgisi; §a" + w + "," + x1 + "," + y1 + "," + z1 + "|" + x2 + "," + y2 + "," + z2,
 				" §8• §7Toplam Blok Sayısı; §a" + cal.blokSayisiBul(new Location(Bukkit.getWorld(w), x1, y1, z1),
 						new Location(Bukkit.getWorld(w), x2, y2, z2)) + " Adet",
 				" §8• §7Ekip Büyüklüğü; §a" + ((ArrayList<String>) jo.get("Ekip-Liste")).size() + " Kişi",
@@ -164,13 +163,13 @@ public class Claim_Listesi_Genel implements Listener {
 												int z1 = Integer
 														.parseInt(this.liste.get(i).split("&")[2].split(",")[2]);
 
-												int kucukX = x < x1 ? x : x1;
-												int kucukY = y < y1 ? y : y1;
-												int kucukZ = z < z1 ? z : z1;
+												int kucukX = Math.min(x, x1);
+												int kucukY = Math.min(y, y1);
+												int kucukZ = Math.min(z, z1);
 
-												int buyukX = x > x1 ? x : x1;
-												int buyukY = y > y1 ? y : y1;
-												int buyukZ = z > z1 ? z : z1;
+												int buyukX = Math.max(x, x1);
+												int buyukY = Math.max(y, y1);
+												int buyukZ = Math.max(z, z1);
 
 												double isinlanX = (((kucukX + buyukX) / 2));
 												double isinlanY = (kucukY + buyukY) / 2;

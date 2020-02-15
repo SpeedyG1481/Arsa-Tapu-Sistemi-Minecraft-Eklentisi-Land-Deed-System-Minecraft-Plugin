@@ -1,0 +1,16 @@
+name: Basic-Claims
+author: SpeedyG(YSO)
+version: 2.2.2
+main: com.speedyg.basicclaim.Claim
+softdepend: [CoinsAPINB, PlaceholderAPI]
+depend: [Vault]
+commands:
+  kirala:
+    description: Eklentinin genel komutudur.
+    aliases: [kirayer,kiralayer, yerkirala, yer, yeral, claim, claimal]
+  kiralaadmin:
+    description: Eklentinin admin komutudur.
+    aliases: [kiralaa, cadmin, cadmin]
+  silinenler:
+    description: Eklentinin admin komutudur.
+    aliases: [silinen, sarsa, sarsalar, silinena]
